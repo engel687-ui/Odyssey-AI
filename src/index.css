@@ -1,0 +1,189 @@
+@import url('tailwindcss/base');
+@import url('tailwindcss/components');
+@import url('tailwindcss/utilities');
+
+:root {
+  /* Modern Odyssey AI Color Palette */
+  --primary: 267 84% 66%;     /* #6D5FFD - vibrant purple */
+  --accent: 194 74% 57%;      /* #36B3D9 - bright cyan */
+  --background: 0 0% 99%;     /* #FCFCFC - pure white */
+  --dark-mode: 224 71% 4%;    /* #05080F - deep navy */
+
+  /* UI System Colors */
+  --border: 220 13% 91%;      /* #E4E4E7 */
+  --input: 220 13% 94%;       /* #F1F1F3 */
+  --ring: 267 84% 66%;        /* Match primary */
+  --foreground: 224 71% 4%;   /* Dark navy text */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;   /* #F4F4F6 */
+  --secondary-foreground: 215 25% 27%;  /* #3F4A5C */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --muted: 220 14% 96%;       /* #F4F4F6 */
+  --muted-foreground: 215 16% 47%;      /* #6B7280 */
+  --accent-foreground: 0 0% 100%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 71% 4%;
+  --sidebar-background: 220 14% 98%;
+  --sidebar-foreground: 224 71% 4%;
+  --sidebar-primary: 267 84% 66%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 194 74% 57%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 220 13% 88%;
+  --sidebar-ring: 267 84% 66%;
+  --chart-1: 267 84% 66%;
+  --chart-2: 194 74% 57%;
+  --chart-3: 142 71% 45%;
+  --chart-4: 38 92% 50%;
+  --chart-5: 340 82% 52%;
+  --radius: 12px;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, hsl(220 14% 98%) 0%, hsl(0 0% 99%) 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210deg 40% 98%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(210deg 16% 77%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(210deg 16% 66%);
+}
+
+/* Utility for legacy bg opacity used in templates */
+.bg-opacity-50 { opacity: 0.5; }
+
+/* Line clamp utility used in components */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Modern Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Modern button hover effects */
+.btn-glow:hover {
+  box-shadow: 0 0 30px hsla(267, 84%, 66%, 0.3);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth focus rings */
+.focus-ring:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* Ensure form elements have a solid background to avoid unintended transparency */
+input, select, textarea, button {
+  background: hsl(var(--background));
+}
